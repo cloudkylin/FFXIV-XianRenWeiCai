@@ -58,8 +58,6 @@ class analysis:
             maxmoneyLine = 0
             for j in range(8):
                 time = self.linsam[j].count(maxmoneyNum[i])
-                if i ==0:
-                    print(time)
                 if time > maxmoneyProbability:
                     maxmoneyProbability = time
                     maxmoneyLine = j
