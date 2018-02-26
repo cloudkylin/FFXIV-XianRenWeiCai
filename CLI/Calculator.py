@@ -60,7 +60,7 @@ class analysis:
                 time = self.linsam[j].count(maxmoneyNum[i])
                 if time > maxmoneyProbability:
                     maxmoneyProbability = time
-                    maxmoneyLine = i
+                    maxmoneyLine = j
             if maxmoneyProbability == 0:
                 msg += '没有可能获得 %d 金蝶币。\n'% self.money[maxmoneyNum[i]]
             else:
