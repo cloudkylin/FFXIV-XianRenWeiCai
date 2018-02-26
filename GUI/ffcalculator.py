@@ -49,3 +49,20 @@ class analysis:
                 maxmoney = avgmoney[i]
                 maxmoneyline = i
         return '预计选择 ' + self.way[maxmoneyline] + ' 获得的金蝶币最多，为 ' + str(maxmoney)
+
+    def maxmoneyline(self):
+        maxmoneyNum = (6, 24, 23)
+        msg = ''
+        for i in range(3):
+            maxmoneyProbability = 0
+            maxmoneyLine = 0
+            for j in range(8):
+                time = self.linsam[j].count(maxmoneyNum[i])
+                if time > maxmoneyProbability:
+                    maxmoneyProbability = time
+                    maxmoneyLine = i
+            if maxmoneyProbability == 0:
+                msg += '没有可能获得 %d 金蝶币。\n'% self.money[maxmoneyNum[i]]
+            else:
+                msg += '选择 %s 最有可能获得 %d 金蝶币，概率为 %d/120。\n'% (self.way[maxmoneyLine], self.money[maxmoneyNum[i]], maxmoneyProbability)
+        return msg
