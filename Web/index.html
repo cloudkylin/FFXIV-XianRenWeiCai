@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
     <title>最终幻想14 - 仙人微彩计算器</title>
@@ -10,23 +10,30 @@
 <body>
     <div class="mainpage">
         <div class="title">
-            <h1>最终幻想14 - 仙人微彩计算器</h1>
+            <div id="maintitle"><h2>最终幻想14</h2></div>
+            <div id="sectitle"><h2>仙人微彩计算器</h2></div>
         </div>
-        <form name="myform" action="http://127.0.0.1:5000/" onsubmit="return check()" method="post">
+        <form name="myform" action="http://127.0.0.1:5000" onsubmit="return check()" method="post">
             <div class="formdiv">
-                <input type="text" name="pos1" id="pos1">
-                <input type="text" name="pos2" id="pos2">
-                <input type="text" name="pos3" id="pos3">
-                <input type="text" name="pos4" id="pos4">
-                <input type="text" name="pos5" id="pos5">
-                <input type="text" name="pos6" id="pos6">
-                <input type="text" name="pos7" id="pos7">
-                <input type="text" name="pos8" id="pos8">
-                <input type="text" name="pos9" id="pos9">
+                <div class="line">
+                    <div class="input"><input type="number" name="pos1" id="pos1" title="左上"></div>
+                    <div class="input"><input type="number" name="pos2" id="pos2" title="中上"></div>
+                    <div class="input"><input type="number" name="pos3" id="pos3" title="右上"></div>
+                </div>
+                <div class="line">
+                    <div class="input"><input type="number" name="pos4" id="pos4" title="左中"></div>
+                    <div class="input"><input type="number" name="pos5" id="pos5" title="中"></div>
+                    <div class="input"><input type="number" name="pos6" id="pos6" title="右中"></div>
+                </div>
+                <div class="line">
+                    <div class="input"><input type="number" name="pos7" id="pos7" title="左下"></div>
+                    <div class="input"><input type="number" name="pos8" id="pos8" title="中下"></div>
+                    <div class="input"><input type="number" name="pos9" id="pos9" title="右下"></div>
+                </div>
             </div>
             <div class="button">
-                <input type="submit" class="submit">
-                <input type="reset" class="reset">
+                <input type="submit" class="submit" title="提交">
+                <input type="reset" class="reset" title="重置">
             </div>
         </form>
     </div>
