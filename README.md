@@ -27,9 +27,10 @@ Windows用户可在[releases](https://github.com/cloudkylin/FFXIV-XianRenWeiCai/
 ## 使用
 在使用目录下执行以下操作：
 > git clone https://github.com/cloudkylin/FFXIV-XianRenWeiCai.git
+
 > cd FFXIV-XianRenWeiCai/
 
-Windows用户可以点击页面右上角的**`Clone or download`**中的**`Download ZIP`**。
+Windows用户可以点击页面右上角的`Clone or download`中的`Download ZIP`。
 
 
 CLI和GUI版本可以执行以下命令启动：
