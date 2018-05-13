@@ -1,22 +1,22 @@
 # -*- coding: UTF-8 -*-
-from flask import Flask
-from flask import request
+from flask import Flask,request,render_template,url_for
+import itertools
+
 app = Flask(__name__)
 
-import itertools
 
 class analysis:
     def __init__(self, x, y):
-        #固定参数
+        # 固定参数
         self.money = {6: 10000, 7: 36, 8: 720, 9: 360, 10: 80, 11: 252,
-                 12: 108, 13: 72, 14: 54, 15: 180, 16: 72, 17: 180,
-                 18: 119, 19: 36, 20: 306, 21: 1080, 22: 144, 23: 1800, 24: 3600}
+                      12: 108, 13: 72, 14: 54, 15: 180, 16: 72, 17: 180,
+                      18: 119, 19: 36, 20: 306, 21: 1080, 22: 144, 23: 1800, 24: 3600}
         self.way = ['第一行', '第二行', '第三行', '第一列', '第二列', '第三列', '左上至右下', '右上至左下']
         self.num = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         self.x = x
         self.y = y
 
-        #计算变量
+        # 计算变量
         self.linsam = [[] for i in range(8)]
         self.linmoney = [[] for i in range(8)]
 
@@ -28,8 +28,8 @@ class analysis:
                 comb.insert(x[j], y[j])
             self.cal(comb)
 
-    def cal(self,list):
-        #计算每一行的总合
+    def cal(self, list):
+        # 计算每一行的总合
         self.linsam[0].append(list[0] + list[1] + list[2])
         self.linsam[1].append(list[3] + list[4] + list[5])
         self.linsam[2].append(list[6] + list[7] + list[8])
@@ -39,7 +39,7 @@ class analysis:
         self.linsam[6].append(list[0] + list[4] + list[8])
         self.linsam[7].append(list[2] + list[4] + list[6])
 
-        #计算每一行的奖励
+        # 计算每一行的奖励
         for i in range(8):
             num = self.linsam[i][-1]
             self.linmoney[i].append(self.money[num])
@@ -53,7 +53,7 @@ class analysis:
             if avgmoney[i] > float(maxmoney):
                 maxmoney = avgmoney[i]
                 maxmoneyline = i
-        return '预计选择 ' + self.way[maxmoneyline] + ' 获得的金蝶币最多，为 ' + str(maxmoney) + '</br>'
+        return '预计选择 ' + self.way[maxmoneyline] + ' 获得的金蝶币最多，为 ' + str(maxmoney)
 
     def maxmoneyline(self):
         maxmoneyNum = (6, 24, 23)
@@ -67,13 +67,18 @@ class analysis:
                     maxmoneyProbability = time
                     maxmoneyLine = j
             if maxmoneyProbability == 0:
-                msg += '没有可能获得 %d 金蝶币。\n'% self.money[maxmoneyNum[i]]
+                msg += '没有可能获得 %d 金蝶币。<br/>' % self.money[maxmoneyNum[i]]
             else:
-                msg += '选择 %s 最有可能获得 %d 金蝶币，概率为 %d/120。</br>'% (self.way[maxmoneyLine], self.money[maxmoneyNum[i]], maxmoneyProbability)
+                msg += '选择 %s 最有可能获得 %d 金蝶币，概率为 %d/120。<br/>' % (
+                self.way[maxmoneyLine], self.money[maxmoneyNum[i]], maxmoneyProbability)
         return msg
 
-@app.route('/', methods=['POST'])
+@app.route('/',methods=['GET'])
 def index():
+    return render_template('index.html')
+
+@app.route('/', methods=['POST'])
+def cal():
     pos = []
     num = []
     if request.form['pos1'] != '':
@@ -104,9 +109,10 @@ def index():
         pos.append(8)
         num.append(int(request.form['pos9']))
     res = analysis(pos, num)
-    ret = res.bestline()
-    ret += res.maxmoneyline()
-    return ret
+    bestline = res.bestline()
+    maxmoney = res.maxmoneyline()
+    return render_template('index.html',bestline=bestline,maxmoney=maxmoney)
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5900)
+    app.run(host='0.0.0.0', port=5900)
