@@ -21,13 +21,13 @@ Windows用户可在[releases](https://github.com/cloudkylin/FFXIV-XianRenWeiCai/
     * Tkinter在某些Python3安装包中已经内置，不需要单独安装。
     * 如未安装或不确定，可执行以下命令：
     * > pip install tkinter
-* Web：服务器版。需安装Flask。（如在非本机运行，请先确定您服务器的Web服务可用）
+* Web：服务器版。需安装Flask。（请先确定您服务器的Web服务可用）
     * > pip install flask
 
 ## 使用
 在使用目录下执行以下操作：
 > git clone https://github.com/cloudkylin/FFXIV-XianRenWeiCai.git
-
+>
 > cd FFXIV-XianRenWeiCai/
 
 Windows用户可以点击页面右上角的`Clone or download`中的`Download ZIP`。
@@ -42,12 +42,11 @@ CLI和GUI版本可以执行以下命令启动：
 Web版请参考下个板块“配置”来配置您的服务器。
 
 ## 配置
-CLI和GUI版本不需要配置，请看下一部分“使用”。
+CLI和GUI版本不需要配置。
 
-Web版需将本项目Web文件夹下的文件复制到您服务器的Web文件夹下，请确认可以通过您的域名访问。
+Web版需将本项目Web文件夹下的文件复制到您服务器的Web文件夹下，请确认您服务器的权限正确。
 
-修改index.html中第16行`action="http://127.0.0.1:5000"`为您服务器地址。然后执行以下操作来启用Flask监听。
-> python3 Web/server.py
+执行`python3 Web/server.py`即可启用服务，默认地址为`http://您服务器的IP:5900`，请检查端口是否冲突，如果冲突，可以修改`server.py`第118行，port后的数值。
 
 ## Web版运行Demo：
 [CloudKylin - 仙人微彩计算器](http://182.254.210.194/xrwc/)（可能无法访问）
