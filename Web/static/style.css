@@ -1,160 +1,179 @@
-body{
-    margin: 0;
-    padding-top: 20px;
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
     width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url("geometry2.png");
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-weight: 300;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#maintitle {
+    width: 100%;
+}
+
+#sectitle {
+    width: 100%;
+    margin: 2px 0;
+    font-size: x-large;
+}
+
+.deck {
+    width: 500px;
+    height: 520px;
+    background: linear-gradient(160deg, #e3e3e3 0%, #ebebeb 100%);
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px 20px;
 }
-h2{
-    margin: 10px 0;
+
+.deck .box {
+    height: 120px;
+    width: 120px;
+    background: #f9f9f9;
+    border-style: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    text-align: center;
+    font-size: 2em;
 }
-form{
-    margin: 0;
-    padding: 0;
-}
-input{
-    width: 100%;
-    margin: 0;
-    padding: 0;
+
+.button {
     text-align: center;
 }
 
-.title{
-    width: 100%;
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-}
-.line{
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-.input{
-    width: 31%;
-    margin: 1%;
-    padding: 0;
+.submit, .reset {
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
+.submit {
+    background-color: #008CBA;
+    color: #ffffff;
+}
 
-@media screen and (max-width: 480px){
-    .mainpage{
-        width: 100%;
-        margin: 0;
-    }
+.reset {
+    background-color: #e7e7e7;
+    color: #000000;
+}
 
-    /*标题部分开始*/
-    #maintitle{
-        width: 100%;
-        font-size: large;
-    }
-    #sectitle{
-        width: 100%;
-        font-size: small;
-    }
-    h2{
-        margin: 0;
-    }
-    /*标题部分结束*/
-
-    /*表单部分开始*/
-    .formdiv,.button{
-        margin-top: 15px;
-        text-align: center;
+@media screen and (max-width: 540px) {
+    .deck {
+        width: 96%;
+        height: auto;
+        padding: 5%;
+        margin: 2%;
     }
 
-    input{
-        height: 2em;
-        font-size: 2em;
+    .deck .box {
+        height: 3em;
+        width: 27.33%;
+        margin: 3%;
+        font-size: 1.4em;
     }
-    .submit,.reset{
+
+    .button {
+        margin-top: 10px;
+    }
+
+    .submit, .reset {
         width: 40%;
-        height: 48px;
-        margin: 0 3%;
-        font-size: 1.2em;
+        margin: 3%;
+        font-size: 1.1em;
     }
-    /*表单部分结束*/
 }
 
-@media screen and (min-width: 481px) and (max-width: 960px){
-    .mainpage{
-        width: 481px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    /*标题部分开始*/
-    #maintitle,#sectitle{
-        width: 48%;
-        padding: 0 1%;
-        font-size: larger;
-    }
-    #maintitle{
-        text-align: right;
-    }
-    #sectitle{
-        text-align: left;
-    }
-    /*标题部分结束*/
-
-    /*表单部分开始*/
-    .formdiv,.button{
-        text-align: center;
-    }
-
-    input{
-        height: 2em;
-        font-size: 2em;
-    }
-    .submit,.reset{
+@media screen and (min-width: 540px) and (max-width: 1080px) {
+    .submit, .reset {
         width: 40%;
-        height: 48px;
         margin: 3%;
         font-size: 1.2em;
     }
-    /*表单部分结束*/
 }
 
-@media screen and (min-width: 961px){
-    .mainpage{
-        width: 541px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    /*标题部分开始*/
-    #maintitle,#sectitle{
-        width: 48%;
-        padding: 0 1%;
-        font-size: larger;
-    }
-    #maintitle{
-        text-align: right;
-    }
-    #sectitle{
-        text-align: left;
-    }
-    /*标题部分结束*/
-
-    /*表单部分开始*/
-    form{
+@media screen and (min-width: 1080px) {
+    form {
         display: flex;
     }
-    .formdiv{
-        width: 75%;
-    }
-    .button{
-        width: 25%;
+
+    .button {
+        width: 120px;
+        height: 160px;
+        margin: 32px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    input{
-        height: 40px;
-        font-size: 1.5em;
-    }
-    .submit,.reset{
-        width: 94%;
-        height: 44px;
-        margin: 3%;
+    .submit, .reset {
+        width: 100%;
         border-width: 2px;
         font-size: 1em;
     }
-    /*表单部分结束*/
+
+    .submit span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .submit span:after {
+        content: '»';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .submit:hover span {
+        padding-right: 25px;
+    }
+
+    .submit:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
 }

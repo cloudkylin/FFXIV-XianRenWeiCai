@@ -4,46 +4,42 @@
     <meta charset="UTF-8">
     <title>最终幻想14 - 仙人微彩计算器</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-    <script src="{{url_for('static',filename='check.js')}}"></script>
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <script src="{{ url_for('static',filename='check.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
-<div class="mainpage">
-    <div class="title">
-        <div id="maintitle"><h2>最终幻想14</h2></div>
-        <div id="sectitle"><h2>仙人微彩计算器</h2></div>
-    </div>
-    <form name="myform" action="#" onsubmit="return check()" method="post">
-        <div class="formdiv">
-            <div class="line">
-                <div class="input"><input type="number" name="pos1" id="pos1" title="左上"></div>
-                <div class="input"><input type="number" name="pos2" id="pos2" title="中上"></div>
-                <div class="input"><input type="number" name="pos3" id="pos3" title="右上"></div>
+<div class="container">
+    <header class="title">
+        <h1 id="sectitle">Final Fantasy XIV</h1>
+        <h1 id="maintitle">仙人微彩计算器</h1>
+    </header>
+    <section>
+        <form name="myform" action="#" onsubmit="return check()" method="post">
+            <div class="deck">
+                <input type="number" name="pos1" id="pos1" class="box" title="左上">
+                <input type="number" name="pos2" id="pos2" class="box" title="中上">
+                <input type="number" name="pos3" id="pos3" class="box" title="右上">
+                <input type="number" name="pos4" id="pos4" class="box" title="左中">
+                <input type="number" name="pos5" id="pos5" class="box" title="中">
+                <input type="number" name="pos6" id="pos6" class="box" title="右中">
+                <input type="number" name="pos7" id="pos7" class="box" title="左下">
+                <input type="number" name="pos8" id="pos8" class="box" title="中下">
+                <input type="number" name="pos9" id="pos9" class="box" title="右下">
             </div>
-            <div class="line">
-                <div class="input"><input type="number" name="pos4" id="pos4" title="左中"></div>
-                <div class="input"><input type="number" name="pos5" id="pos5" title="中"></div>
-                <div class="input"><input type="number" name="pos6" id="pos6" title="右中"></div>
+            <div class="button">
+                <button type="submit" class="submit" title="提交"><span>提交</span></button>
+                <button type="reset" class="reset" title="重置">重置</button>
             </div>
-            <div class="line">
-                <div class="input"><input type="number" name="pos7" id="pos7" title="左下"></div>
-                <div class="input"><input type="number" name="pos8" id="pos8" title="中下"></div>
-                <div class="input"><input type="number" name="pos9" id="pos9" title="右下"></div>
-            </div>
+        </form>
+        <div id="ans">
+            {% if bestline %}
+                <p>最佳行：{{ bestline }}</p>
+            {% endif %}
+            {% if maxmoney %}
+                <p>最大可能性：{{ maxmoney|safe }}</p>
+            {% endif %}
         </div>
-        <div class="button">
-            <input type="submit" class="submit" title="提交">
-            <input type="reset" class="reset" title="重置">
-        </div>
-    </form>
-    <div id="ans">
-        {%if bestline%}
-        <p>最佳行：{{bestline}}</p>
-        {%endif%}
-        {%if maxmoney%}
-        <p>最大可能性：{{maxmoney|safe}}</p>
-        {%endif%}
-    </div>
+    </section>
 </div>
 </body>
 </html>
