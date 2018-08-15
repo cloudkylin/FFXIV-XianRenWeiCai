@@ -75,6 +75,10 @@ h1 {
     font-size: 2em;
 }
 
+.deck input:focus {
+    border: solid #02b3e4;
+}
+
 .button {
     text-align: center;
 }
@@ -88,7 +92,7 @@ h1 {
 }
 
 .submit {
-    background-color: #008CBA;
+    background-color: #02b3e4;
     color: #ffffff;
 }
 

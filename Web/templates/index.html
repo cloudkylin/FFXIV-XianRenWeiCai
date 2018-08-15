@@ -14,21 +14,30 @@
         <h1 id="maintitle">仙人微彩计算器</h1>
     </header>
     <section>
-        <form name="myform" action="#" onsubmit="return check()" method="post">
+        <form name="myform" action="#" onsubmit="return submitEvt()" method="post">
             <div class="deck">
-                <input type="number" name="pos1" id="pos1" class="box" title="左上">
-                <input type="number" name="pos2" id="pos2" class="box" title="中上">
-                <input type="number" name="pos3" id="pos3" class="box" title="右上">
-                <input type="number" name="pos4" id="pos4" class="box" title="左中">
-                <input type="number" name="pos5" id="pos5" class="box" title="中">
-                <input type="number" name="pos6" id="pos6" class="box" title="右中">
-                <input type="number" name="pos7" id="pos7" class="box" title="左下">
-                <input type="number" name="pos8" id="pos8" class="box" title="中下">
-                <input type="number" name="pos9" id="pos9" class="box" title="右下">
+                <input type="number" name="pos1" id="pos1" class="box" title="左上" onfocus="focusEvt(event)"
+                       onblur="blurEvt(event)">
+                <input type="number" name="pos2" id="pos2" class="box" title="中上" onfocus="focusEvt(event)"
+                       onblur="blurEvt(event)">
+                <input type="number" name="pos3" id="pos3" class="box" title="右上" onfocus="focusEvt(event)"
+                       onblur="blurEvt(event)">
+                <input type="number" name="pos4" id="pos4" class="box" title="左中" onfocus="focusEvt(event)"
+                       onblur="blurEvt(event)">
+                <input type="number" name="pos5" id="pos5" class="box" title="中" onfocus="focusEvt(event)"
+                       onblur="blurEvt(event)">
+                <input type="number" name="pos6" id="pos6" class="box" title="右中" onfocus="focusEvt(event)"
+                       onblur="blurEvt(event)">
+                <input type="number" name="pos7" id="pos7" class="box" title="左下" onfocus="focusEvt(event)"
+                       onblur="blurEvt(event)">
+                <input type="number" name="pos8" id="pos8" class="box" title="中下" onfocus="focusEvt(event)"
+                       onblur="blurEvt(event)">
+                <input type="number" name="pos9" id="pos9" class="box" title="右下" onfocus="focusEvt(event)"
+                       onblur="blurEvt(event)">
             </div>
             <div class="button">
                 <button type="submit" class="submit" title="提交"><span>提交</span></button>
-                <button type="reset" class="reset" title="重置">重置</button>
+                <button type="reset" class="reset" title="重置" onclick="resetEvt()">重置</button>
             </div>
         </form>
         <div id="ans">
