@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from flask import Flask, request, render_template, url_for
+from flask import Flask, request, render_template
 import itertools
 
 app = Flask(__name__)
@@ -29,16 +29,16 @@ class Analysis:
                 comb.insert(x[j], y[j])  # 将已知的数插入对应位置
             self.cal(comb)
 
-    def cal(self, list):
+    def cal(self, lists):
         # 计算每种情况的总合
-        self.lineSum[0].append(list[0] + list[1] + list[2])  # 第一行
-        self.lineSum[1].append(list[3] + list[4] + list[5])  # 第二行
-        self.lineSum[2].append(list[6] + list[7] + list[8])  # 第三行
-        self.lineSum[3].append(list[0] + list[3] + list[6])  # 第一列
-        self.lineSum[4].append(list[1] + list[4] + list[7])  # 第二列
-        self.lineSum[5].append(list[2] + list[5] + list[8])  # 第三列
-        self.lineSum[6].append(list[0] + list[4] + list[8])  # 左上至右下
-        self.lineSum[7].append(list[2] + list[4] + list[6])  # 右上至左下
+        self.lineSum[0].append(lists[0] + lists[1] + lists[2])  # 第一行
+        self.lineSum[1].append(lists[3] + lists[4] + lists[5])  # 第二行
+        self.lineSum[2].append(lists[6] + lists[7] + lists[8])  # 第三行
+        self.lineSum[3].append(lists[0] + lists[3] + lists[6])  # 第一列
+        self.lineSum[4].append(lists[1] + lists[4] + lists[7])  # 第二列
+        self.lineSum[5].append(lists[2] + lists[5] + lists[8])  # 第三列
+        self.lineSum[6].append(lists[0] + lists[4] + lists[8])  # 左上至右下
+        self.lineSum[7].append(lists[2] + lists[4] + lists[6])  # 右上至左下
 
         # 计算每种情况的奖励
         for i in range(8):
@@ -50,38 +50,38 @@ class Analysis:
             else:
                 self.lineStat[i][self.money[num]] = 1
 
-    def maxavg(self):
-        maxavg_money = 0
-        maxavg_way = 0
-        thisway = 0
+    def max_avg(self):
+        max_avg_money = 0
+        max_avg_way = 0
+        this_way = 0
         for line in self.lineStat:  # 获取每一行的统计结果
-            sum = 0
+            sum_money = 0
             for money, times in line.items():
-                sum += money * times
-            sum /= 120  # 求每一行的平均值
-            if sum > maxavg_money:  # 判断是否更新最大值
-                maxavg_money = sum
-                maxavg_way = thisway
-            thisway += 1  # 计数
-        return '预计选择 %s 获得的金蝶币最多，为 %d' % (self.way[maxavg_way], maxavg_money)
+                sum_money += money * times
+            sum_money /= 120  # 求每一行的平均值
+            if sum_money > max_avg_money:  # 判断是否更新最大值
+                max_avg_money = sum_money
+                max_avg_way = this_way
+            this_way += 1  # 计数
+        return '预计选择 %s 获得的金蝶币最多，为 %d' % (self.way[max_avg_way], max_avg_money)
 
-    def mostmoney(self):
-        neednum = (10000, 3600, 1800)
+    def most_money(self):
+        need_num = (10000, 3600, 1800)
         msg = ''
-        for money in neednum:
-            maxtimes_money = 0
-            maxtimes_way = 0
-            thisway = 0
+        for money in need_num:
+            max_times_money = 0
+            max_times_way = 0
+            this_way = 0
             for line in self.lineStat:  # 获取每一行的统计结果
-                if line.get(money, 0) > maxtimes_money:  # 判断是否需要更新最大值
-                    maxtimes_money = line.get(money)
-                    maxtimes_way = thisway
-                thisway += 1
-            if maxtimes_money == 0:  # 判断是否有需要的钱数
+                if line.get(money, 0) > max_times_money:  # 判断是否需要更新最大值
+                    max_times_money = line.get(money)
+                    max_times_way = this_way
+                this_way += 1
+            if max_times_money == 0:  # 判断是否有需要的钱数
                 msg += '没有可能获得 %d 金蝶币。<br/>' % money
             else:
                 msg += '选择 %s 最有可能获得 %d 金蝶币，概率为 %d/120。<br/>' % (
-                    self.way[maxtimes_way], money, maxtimes_money)
+                    self.way[max_times_way], money, max_times_money)
         return msg
 
 
@@ -122,9 +122,9 @@ def cal():
         pos.append(8)
         num.append(int(request.form['pos9']))
     res = Analysis(pos, num)
-    bestline = res.maxavg()
-    maxmoney = res.mostmoney()
-    return render_template('index.html', bestline=bestline, maxmoney=maxmoney)
+    best_line = res.max_avg()
+    max_money = res.most_money()
+    return render_template('index.html', bestline=best_line, maxmoney=max_money)
 
 
 if __name__ == '__main__':
