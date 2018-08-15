@@ -58,7 +58,6 @@ function focusEvt(e) {
     for (let box of boxes) {
         let num = box.value;
         if (num) {
-            console.log(repeatNum.indexOf(num) === -1);
             if (1 <= num && num <= 9 && repeatNum.indexOf(num) === -1) {
                 box.style.borderStyle = 'solid';
                 box.style.borderColor = '#15c26b';
