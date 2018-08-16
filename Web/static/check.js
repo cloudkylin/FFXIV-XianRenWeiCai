@@ -38,6 +38,7 @@ function resetEvt() {
     for (let box of boxes) {
         box.style.borderStyle = null;
         box.style.borderColor = null;
+        box.style.background = null;
     }
     numLine = [];
 }

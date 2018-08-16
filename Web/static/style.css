@@ -83,7 +83,7 @@ h1 {
     text-align: center;
 }
 
-.submit, .reset {
+.lucky, .submit, .reset {
     height: 48px;
     border: none;
     border-radius: 8px;
@@ -91,7 +91,13 @@ h1 {
     cursor: pointer;
 }
 
+.lucky {
+    background-color: #67e401;
+    color: #ffffff;
+}
+
 .submit {
+    display: none;
     background-color: #02b3e4;
     color: #ffffff;
 }
@@ -120,7 +126,7 @@ h1 {
         margin-top: 10px;
     }
 
-    .submit, .reset {
+    .lucky, .reset {
         width: 40%;
         margin: 3%;
         font-size: 1.1em;
@@ -128,7 +134,7 @@ h1 {
 }
 
 @media screen and (min-width: 540px) and (max-width: 1080px) {
-    .submit, .reset {
+    .lucky, .reset {
         width: 40%;
         margin: 3%;
         font-size: 1.2em;
@@ -150,7 +156,11 @@ h1 {
         align-items: center;
     }
 
-    .submit, .reset {
+    .submit {
+        display: inline;
+    }
+
+    .lucky, .submit, .reset {
         width: 100%;
         border-width: 2px;
         font-size: 1em;
