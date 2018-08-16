@@ -1,0 +1,12 @@
+.idea
+venv
+
+*.py[cod]
+__pycache__
+dist
+build
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
