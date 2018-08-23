@@ -46,7 +46,7 @@ CLI和GUI版本不需要配置。
 
 Web版需将本项目Web文件夹下的文件复制到您服务器的Web文件夹下，请确认您服务器的权限正确。
 
-执行`python3 Web/server.py`即可启用服务，默认地址为`http://您服务器的IP:5900`，请检查端口是否冲突，如果冲突，可以修改`server.py`第118行，port后的数值。
+执行`python3 Web/server.py`即可启用服务，默认地址为`http://您服务器的IP:8080`，请检查端口是否冲突，如果冲突，可以修改`server.py`第118行，port后的数值。
 
 ## Web版运行Demo：
 [CloudKylin - 仙人微彩计算器](http://182.254.210.194/xrwc/)（可能无法访问）
